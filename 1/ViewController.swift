@@ -4,8 +4,8 @@
 //
 //  Created by 邱少依 on 16/9/6.
 //  Copyright © 2016年 QSY. All rights reserved.
-//
-// 1.搜索： 遗弃
+//关键字分类
+// 1.搜索： 已被遗弃
 //2. 规则：声明多了变量和常量 + 书写间隔 + .语法 + 舍弃 ; +
 import UIKit
 struct Blog {
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         
     }
     
-    func logIndentifier(message: String) -> Void {
+    func logIndentifier(_ message: String) -> Void {
         let π = 33.1415926
         let _Hello = "hello"
         let 你好 = "你好世界"
@@ -57,11 +57,11 @@ class ViewController: UIViewController {
         print("\n",π,_Hello,你好,`class`,🌍)
     }
     
-    func logKeyword(message: String) -> Void {
+    func logKeyword(_ message: String) -> Void {
         print("\n",(message:"FUNCTION:\(#function) COLUMN:\(#column) FILE:\(#file) LINE:\(#line)", separator: "->", terminator: "\n一切都会结束,代码也不例外"))
     }
     
-    func logConstantAndVariation(message: String) -> Void {
+    func logConstantAndVariation(_ message: String) -> Void {
         let _qsy = "邱少" // 常量
         var x = 10, y = 20 //变量
         x += 1
@@ -85,11 +85,11 @@ class ViewController: UIViewController {
          注释2 */
     }
     
-    func logConnective(message : String) -> Void {
+    func logConnective(_ message : String) -> Void {
         //      一元运算符
         var a = 12
         a += 2// ++ -- 已被遗弃,用 a += 1, a -= 2
-        var b = a
+        let b = a
         print("\n",-a,b)
         //      二元运算符
         var intResult = 1+2 // 10.0 为浮点型
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
         print(result,arr[2],airports["BJ"])
     }
     
-    func dataType(message : String) -> Void {
+    func dataType(_ message : String) -> Void {
         print("UInt8 range: \(UInt8.min) ~ \(UInt8.max)")
         
         print("Int8 range: \(Int8.min) ~ \(Int8.max)")
@@ -159,12 +159,12 @@ class ViewController: UIViewController {
         let  historyScore :UInt8 = 90
         let  englishScore : UInt16 = 130
         let  testFloat: Float = 28.9
-        var is🐴 = true
+        let is🐴 = true
         var is🐻 : Bool = false
-        var student1 = ("100" , "张三" , 80 , 90)
-        var student3 = (id:"1002", name:"李四", chinese_score:32, math_score:80)
-        var student2 :Array = ["woj","huduys",80,37]
-        var student4 : Dictionary = ["name" : "woj","test" : "huduys","id" : 80,"score" : 37]
+        let student1 = ("100" , "张三" , 80 , 90)
+        let student3 = (id:"1002", name:"李四", chinese_score:32, math_score:80)
+        var student2 :Array = ["woj","huduys",80,37] as [Any]
+        var student4 : Dictionary = ["name" : "woj","test" : "huduys","id" : 80,"score" : 37] as [String : Any]
         
         
         
@@ -180,22 +180,22 @@ class ViewController: UIViewController {
         print("学生:\(student3.name) 学号:\(student3.id) 语文:\(student3.chinese_score) 数学:\(student3.math_score)")
         //   var str : String = nil  let n1 : Int = nil 基本或字符串均不允许分配为nil
         //   int?型可以为null
-        var n1 : Int? = 100
+        let n1 : Int? = 100
         print(n1! + 100)
         
-        var n2: Int! = 100
+        let n2: Int! = 100
         print(n2! + 100)
         
     }
     
-    func divide000(n1: Int, n2: Int) -> Double? {
+    func divide000(_ n1: Int, n2: Int) -> Double? {
         if n2 == 0 {
             return nil
         }
         return Double(n1)/Double(n2)
     }
     
-    func logString(message: String) -> Void {
+    func logString(_ message: String) -> Void {
         //   Unicode编码
         let addSign1: Character = "&"
         let addSign2: Character = "\u{26}"// 同上
@@ -223,20 +223,20 @@ class ViewController: UIViewController {
         let flower: Character = "🌻"// Character 单字符
         newStr.append(flower)
         newStr  = newStr + 🌍
-        newStr.insert("9", atIndex: newStr.endIndex)
+        newStr.insert("9", at: newStr.endIndex)
         print("增的newStr为:\(newStr)")
         
-        newStr.removeAtIndex(newStr.endIndex.predecessor())
+        newStr.remove(at: newStr.characters.index(before: newStr.endIndex))
         var rmStartIndex = newStr.startIndex
-        var rmEndIndex = rmStartIndex.advancedBy(9)// [0 9]的闭区间移除
+        var rmEndIndex = newStr.index(rmStartIndex, offsetBy: 9)// [0 9]的闭区间移除
         var rmRange = rmStartIndex...rmEndIndex
-        newStr.removeRange(rmRange)
+        newStr.removeSubrange(rmRange)
         print("删后的newStr为:\(newStr)")
         
         var replaceStart = newStr.startIndex
-        var relpaceEnd = replaceStart.advancedBy(0)
+        var relpaceEnd = newStr.index(replaceStart, offsetBy: 0)
         var replaceRange = replaceStart...relpaceEnd
-        newStr.replaceRange(replaceRange, with: "邱少依")
+        newStr.replaceSubrange(replaceRange, with: "邱少依")
         
         print("改后的newStr为:\(newStr)")
         
@@ -260,10 +260,10 @@ class ViewController: UIViewController {
         //        前后缀比较
         熊.hasPrefix("邱")
         猫.hasSuffix("依")
-        let lowerCaseDoc = 🐼.lowercaseString
+        let lowerCaseDoc = 🐼.lowercased()
     }
     
-    func logKeyworUse(message: String) -> Void {
+    func logKeyworUse(_ message: String) -> Void {
         let a = 100
         let b = 77
         //        if
@@ -309,7 +309,7 @@ class ViewController: UIViewController {
             gradeNew = "无"
         }
         
-        var student = (id: "1002", name: "李四", age:32, ChineseScore:90, EnglishScore:99)
+        let student = (id: "1002", name: "李四", age:32, ChineseScore:90, EnglishScore:99)
         var desc: String
         switch student {
         case (let _,let _,let AGE,90...100, 90...100):
@@ -358,7 +358,7 @@ class ViewController: UIViewController {
             print("coutn is :\(item)")
         }
         
-        for (index, element) in numbers.enumerate(){
+        for (index, element) in numbers.enumerated(){
             print("Item \(index): \(element))")
         }
         
@@ -384,7 +384,7 @@ class ViewController: UIViewController {
     //        print("这篇博客没有名字！")
     //    }
     
-    func guardStyleBlog(blog: Blog) {
+    func guardStyleBlog(_ blog: Blog) {
         guard let blogName = blog.name else {
             print("这博客没有名字")
             return
@@ -392,29 +392,65 @@ class ViewController: UIViewController {
         print("这博客的名字:\(blogName)")
     }
     
-    func logArrAndDic(message: String) {
-        //       不可变数组
+    func logArrAndDic(_ message: String) {
+           //      可变数组
         var studentListArr1: Array<String> = ["张三","李四","王五","董六"]
-        var studentListArr3 = Array<String>()
-        var studentListArr2 = [String]()
-        
-        //      可变数组
+        var studentListArr3 = Array<String>()//空数组
+        var studentListArr2 = [String]()//空数组
         var studentList3: [String] = ["张三","李四","王五"]
         studentList3.append("董六")
         studentList3 += ["刘备", "关羽"]
-        studentList3.insert("郑飞", atIndex: studentList3.endIndex)
-        studentList3.removeAtIndex(studentList3.startIndex)
-        for (index, value) in studentList3.enumerate() {
+        studentList3.insert("郑飞", at: studentList3.endIndex)
+        studentList3.remove(at: studentList3.startIndex)
+        
+        for (index, value) in studentList3.enumerated() {
             print("Item\(index) : \(value)")
         }
+        
         //     字典
         var studentDic0: Dictionary<Int, String> = [102 : "张三",105 : "李四", 109 : "王五"]
         var studentDic2 = Dictionary<Int, String>() // 空字典
-        var studentDic3 = [Int: String]()
+        var studentDic3 = [Int: String]()// 空字典
         var studentDic1 = [102 : "张三", 109 : "李四", 87 : "王五"]
-        studentDic1.removeValueForKey(102)
+        studentDic1.removeValue(forKey: 102)
         studentDic1.updateValue("我擦", forKey: 109)
-//        https://mp.weixin.qq.com/s?__biz=MjM5NTIyNTUyMQ==&mid=2709545194&idx=1&sn=e0e20cd038874aaf57b7e9de0910ab92&scene=0&key=7b81aac53bd2393d7874bc0ef4e640900acfb61e1e44da1baf060e587897ab8a7e21d5c6c60036d905840c8d5ec5e361&ascene=0&uin=MzkwNDY0NTc1&devicetype=iMac16%2C2+OSX+OSX+10.11.5+build(15F34)&version=11020201&pass_ticket=dHvzIrch%2FKubZidO7EdiYQ4TVyz7Tr7BNReleJP62gQvpFLE9%2FAS691P79jGTty%2F
+        
+        for studentID in studentDic1.keys {
+            print("学号: \(studentID)")
+        }
+        for studentName in studentDic1.values {
+            print("学生: \(studentName)")
+        }
+        for (key,value) in studentDic1 {
+            print("Item:\(key),Value:\(value)")
+        }
+        //        集合
+        let studentList11: Set<String> = ["张三","李四","王五","董六"]
+        let studentList111: Set<String> = ["李四","王五","董六","张三"]
+        var studentList12 = Set<String>()// 空集合
+        
+        if studentList11 == studentList111 {
+            print("集合1studentList11:\(studentList11) 和 集合2 studentList111:\(studentList111)是相等的")
+        }
+        
+        var studentL: Set<String>  = ["张三","李四","王五"]
+        let removeStudent = studentL.removeFirst()
+        studentL.insert("董六")
+        studentL.remove("李四")
+        if studentL.contains("董六") {
+            print("测测这个集合：\(studentL)")
+        }
+        for (index,studentName) in studentL.enumerated() {
+            print("Item \(index) : \(studentName)")
+        }
+//       筛选出2个集合的数据
+        let A: Set<String> = ["a","b","c","d"]
+        let B: Set<String> = ["c","d","e","f"]
+        let C = A.subtracting(B)
+        print("A与B的差集 = \(C)")// a 和 b
+        if C.isSubset(of: A) {
+            print("C是A的子集")
+        }
     }
     
     override func didReceiveMemoryWarning() {
