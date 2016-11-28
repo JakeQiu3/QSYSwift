@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         self.logKeyworUse("关键字的使用")
         //        数组、字典和集合
         self.logArrAndDic("数组、字典和集合")
+        self.getNewStr(timeStr: "556");
         
         
     }
@@ -453,6 +454,14 @@ class ViewController: UIViewController {
         }
     }
     
+//    private func
+    private func getNewStr(timeStr: String) -> [Int] {
+        var dateA:[Int] = [Int]()
+        let hhh = timeStr
+        dateA.append(Int(hhh)!)
+        print(dateA)
+        return dateA
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
