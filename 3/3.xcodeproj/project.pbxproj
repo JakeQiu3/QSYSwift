@@ -299,6 +299,7 @@
 				73020B401D9900C1000FB75E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
